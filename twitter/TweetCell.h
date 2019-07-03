@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateView;
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountView;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCountView;
-
+@property (weak, nonatomic) IBOutlet UISwitch *favoriter;
+@property (weak, nonatomic) IBOutlet UISwitch *retweeter;
 
 @end
 
