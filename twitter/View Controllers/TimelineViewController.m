@@ -51,9 +51,6 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-        //Reload the table view
-        // Reload the tableView now that there is new data
-        [self.tableView reloadData];
     }];
 }
 

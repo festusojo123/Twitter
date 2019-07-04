@@ -153,13 +153,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="M5q-Fn-0nB">
                             <connections>
-                                <segue destination="HcF-Yp-ImU" kind="show" id="aYS-JF-C5m"/>
+                                <segue destination="l8a-VI-5TI" kind="presentation" id="Nyt-HA-yfj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="HeO-1B-AYq" id="6u2-XR-V13"/>
                     </connections>
@@ -168,46 +170,44 @@
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kD4-79-KVW">
-            <objects>
-                <viewController id="HcF-Yp-ImU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OwP-D0-7n8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="6dY-St-iRU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gGN-cf-5YW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2431" y="33"/>
-        </scene>
         <!--Compose View Controller-->
-        <scene sceneID="Dhv-SS-pcJ">
+        <scene sceneID="dRh-SB-86A">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p7e-DO-iVy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="LuR-wy-ahi" customClass="ComposeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="x0F-7Q-db2">
+                <viewController id="giZ-ew-FqO" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kic-EA-sby">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p6s-Vh-aGT">
-                                <rect key="frame" x="16" y="70" width="343" height="203"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M6A-po-7qW">
+                                <rect key="frame" x="0.0" y="64" width="359" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="guW-QG-BeG"/>
+                        <viewLayoutGuide key="safeArea" id="5Xs-q7-nNV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZeU-hM-gnh"/>
+                    <navigationItem key="navigationItem" id="nUw-1P-q1f">
+                        <barButtonItem key="leftBarButtonItem" title="X" id="26C-hP-s8W">
+                            <connections>
+                                <action selector="closeAction:" destination="giZ-ew-FqO" id="Fjh-rI-h12"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="fO6-X2-Yml">
+                            <connections>
+                                <action selector="tweetAction:" destination="giZ-ew-FqO" id="wc0-Jj-2w8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ComposeTweetView" destination="M6A-po-7qW" id="DDP-Qx-zzr"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chg-KV-Mgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4340" y="36.431784107946029"/>
+            <point key="canvasLocation" x="3381.5999999999999" y="28.335832083958024"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
@@ -226,6 +226,24 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ibg-Vy-EoF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l8a-VI-5TI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GfN-aR-oX3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="giZ-ew-FqO" kind="relationship" relationship="rootViewController" id="giA-YO-9c3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aco-aB-XGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2442.4000000000001" y="28.335832083958024"/>
         </scene>
     </scenes>
     <resources>

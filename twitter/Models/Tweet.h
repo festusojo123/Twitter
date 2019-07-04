@@ -1,6 +1,7 @@
 //  Tweet.h
 #import <Foundation/Foundation.h>
 #import "User.h"
+
 @interface Tweet : NSObject
 
 // MARK: Properties
@@ -16,5 +17,9 @@
 // For Retweets
 @property (strong, nonatomic) User *retweetedByUser;  // user who retweeted if tweet is retweet
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
+
+// Compose Tweets from APIManager.h
+- (void)postStatusWithText:(void (^)(NSError *))completion;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

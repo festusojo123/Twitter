@@ -6,13 +6,34 @@
 //  Copyright © 2019 Emerson Malca. All rights reserved.
 //
 
+#import "TimelineViewController.h"
 #import "ComposeViewController.h"
+#import "APIManager.h"
 
 @interface ComposeViewController ()
+@property (nonatomic, readwrite, strong) IBOutlet UITextView *ComposeTweetView;
 
 @end
 
 @implementation ComposeViewController
+
+
+- (IBAction)closeAction:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+
+- (IBAction)tweetAction:(id)sender {
+    [[APIManager shared] postStatusWithText:@"hey" completion:^(Tweet *newTweet, NSError *invalidText) {
+        if (newTweet) {
+            NSLog(@"tweet success");
+        }
+        else {
+            NSLog(@"tweet failed %@", invalidText.localizedDescription);
+        }
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
