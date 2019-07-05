@@ -125,23 +125,31 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYO-nv-T1f">
-                                                    <rect key="frame" x="64" y="101" width="69" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="retweet-icon"/>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vr1-es-TIU">
-                                                    <rect key="frame" x="191" y="104" width="84" height="30"/>
+                                                    <rect key="frame" x="219" y="105" width="65" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="Qc1-NA-1Gt" eventType="touchUpInside" id="jP1-Fa-Y84"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYO-nv-T1f">
+                                                    <rect key="frame" x="86" y="105" width="59" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapRT:" destination="Qc1-NA-1Gt" eventType="touchUpInside" id="OlZ-po-J31"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateView" destination="osV-gE-dok" id="QUL-pz-Rxo"/>
                                             <outlet property="favoriteCountView" destination="NR0-M0-ifj" id="ECn-tR-sqy"/>
+                                            <outlet property="favoriter" destination="Vr1-es-TIU" id="iv9-zz-WbB"/>
                                             <outlet property="profilePicView" destination="tZX-Fb-52O" id="58e-jE-0jU"/>
                                             <outlet property="retweetCountView" destination="BuK-11-WHB" id="pSm-xq-MRn"/>
+                                            <outlet property="retweeter" destination="IYO-nv-T1f" id="C1e-IA-DjB"/>
                                             <outlet property="tweetBodyView" destination="5cj-bN-vau" id="LIT-T7-YHn"/>
                                             <outlet property="tweetNameBody" destination="dbz-GI-Gwv" id="VZd-Hs-5Ou"/>
                                             <outlet property="twitterHandleView" destination="asJ-4g-eRA" id="hzj-dn-sNz"/>
@@ -212,7 +220,6 @@
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytz-Ev-cUB">
@@ -224,6 +231,7 @@
                         <segue destination="Lbl-k5-U4i" kind="relationship" relationship="rootViewController" id="1DH-bv-mXM"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860" y="36.431784107946029"/>
         </scene>

@@ -12,10 +12,11 @@
 
 @interface ComposeViewController ()
 @property (nonatomic, readwrite, strong) IBOutlet UITextView *ComposeTweetView;
-
 @end
 
 @implementation ComposeViewController
+
+
 
 
 - (IBAction)closeAction:(id)sender {
@@ -24,9 +25,10 @@
 
 
 - (IBAction)tweetAction:(id)sender {
-    [[APIManager shared] postStatusWithText:@"hey" completion:^(Tweet *newTweet, NSError *invalidText) {
+    [[APIManager shared] postStatusWithText:_ComposeTweetView.text completion:^(Tweet *newTweet, NSError *invalidText) {
         if (newTweet) {
             NSLog(@"tweet success");
+            [self.delegate didTweet:newTweet];
         }
         else {
             NSLog(@"tweet failed %@", invalidText.localizedDescription);

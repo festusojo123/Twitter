@@ -7,21 +7,28 @@
 //
 
 #import "TimelineViewController.h"
+#import "ComposeViewController.h"
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>;
 
 //View controller has a tableView as a subview
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
+@end
 
+
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>;
 @end
 
 @implementation TimelineViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +44,18 @@
     
     [self APIRequestCall];
 }
+
+- (void)logOut{
+    [UIApplication sharedApplication].delegate;
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+}
 
 - (void)APIRequestCall{
         //Make an API request
@@ -71,6 +89,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+//add to array
+- (void)didTweet:(Tweet *)tweet {
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
 
 //Table view asks its dataSource for numberOfRows & cellForRowAt
 //numberOfRows returns the number of items returned from the API
@@ -87,6 +110,7 @@
     
     Tweet* tweet = self.tweets[indexPath.row];
     //User* user = tweet.user;
+    cell.tweet = tweet;
     cell.tweetNameBody.text = tweet.user.name;
     NSLog(@"%@", tweet.user);
     cell.twitterHandleView.text = tweet.user.screenName;
@@ -101,28 +125,18 @@
     
     cell.favoriteCountView.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountView.text = [@(tweet.retweetCount) stringValue];
-    
-   // cell.retweeter.switch = tweet.favorited;
-   // cell.favoriter.switch = tweet.retweeted;
                             
     return cell;
 }
 
-@end
-
-@protocol UITableViewDelegate<NSObject, UIScrollViewDelegate>
-
-@optional
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
-*/
-
 
 @end
+
