@@ -10,5 +10,4 @@
 
 @interface TimelineViewController : UIViewController
 
-
 @end
