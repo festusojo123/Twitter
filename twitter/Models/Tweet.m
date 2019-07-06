@@ -9,19 +9,20 @@
 #import "User.h"
 @implementation Tweet
 
+    
+//init of the dictionary with all the Tweet properties taken from API
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        
-        // Is this a re-tweet?
+        // determines if this a re-tweet or not
         NSDictionary *originalTweet = dictionary[@"retweeted_status"];
         if(originalTweet != nil){
             NSDictionary *userDictionary = dictionary[@"user"];
             self.retweetedByUser = [[User alloc] initWithDictionary:userDictionary];
-            
-            // Change tweet to original tweet
+            // changes tweet to original tweet
             dictionary = originalTweet;
         }
+        //these are the items that the API returns that are then managed by APIManager
         self.idStr = dictionary[@"id_str"];
         self.text = dictionary[@"text"];
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];
@@ -29,7 +30,7 @@
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
         
-        // initialize user
+        // initialize user, separate from tweet, these are used by User.m
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         
@@ -50,6 +51,7 @@
     return self;
 }
 
+//this method takes the tweet's info from a dictionary to an array
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
     NSMutableArray *tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
