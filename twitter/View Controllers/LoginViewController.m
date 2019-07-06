@@ -10,24 +10,28 @@
 #import "APIManager.h"
 
 @interface LoginViewController ()
-
 @end
 
 @implementation LoginViewController
 
+    
+//initial set up to begin loading page
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
+//checks for memory issues
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+
+//if you tap the login button on this page, you access this
 - (IBAction)didTapLogin:(id)sender {
+    //APIManager is called for OAuth verification
     [[APIManager shared] loginWithCompletion:^(BOOL success, NSError *error) {
         if (success) {
+            //segue from login if successful
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         } else {
             NSLog(@"%@", error.localizedDescription);
