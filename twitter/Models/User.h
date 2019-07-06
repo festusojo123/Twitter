@@ -3,13 +3,12 @@
 
 @interface User : NSObject
 
-// MARK: Properties
+// declares the user properties from the main file so it can be used in other files
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *screenName;
 @property (strong, nonatomic) NSString *profilePic;
 
-// Create initializer
+// initializes the dictionary of tweets/properties
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
-// Add any additional properties here
 @end
