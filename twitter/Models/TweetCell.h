@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TweetCell : UITableViewCell
 
+//declaring tweet properties so that these may be altered and appear updated in TimelineView Controller
 @property (weak, nonatomic) IBOutlet UILabel *tweetNameBody;
 @property (weak, nonatomic) IBOutlet UILabel *tweetBodyView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicView;
