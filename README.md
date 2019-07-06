@@ -59,10 +59,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-It's kind of late Friday night, I was trying to record the gif, it works. But hits a break point after posting the tweet.
+It's kind of late Friday night, I was trying to record the gif, and I can assure you it works and posted. For some reason, it hits a break point after posting the tweet. When I take it out, it gets mad at me, but didn't before I updated some UI stuff. Not sure why fixing up the storyboard would impact the functionality, and the error (https://stackoverflow.com/questions/18083560/no-visible-interfacefor-nsnumber-declares-the-selector-initwithint-error) seems to be something I've never run into before.
 
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- BDBOAuth1SessionManager - for OAuth login
