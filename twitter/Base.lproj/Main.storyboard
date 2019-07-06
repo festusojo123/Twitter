@@ -67,9 +67,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="325" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HeO-1B-AYq">
-                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="325" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HeO-1B-AYq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="150" id="Qc1-NA-1Gt" customClass="TweetCell">
@@ -159,10 +158,23 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HeO-1B-AYq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="M5v-dP-paM"/>
+                            <constraint firstItem="HeO-1B-AYq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="RxJ-Lb-EGp"/>
+                            <constraint firstAttribute="bottom" secondItem="HeO-1B-AYq" secondAttribute="bottom" id="b8P-fs-cr2"/>
+                            <constraint firstItem="HeO-1B-AYq" firstAttribute="trailing" secondItem="ugE-Ul-H9I" secondAttribute="trailing" id="htg-Ma-urz"/>
+                            <constraint firstItem="HeO-1B-AYq" firstAttribute="top" secondItem="qax-2F-Vhk" secondAttribute="top" id="nUS-O3-gTc"/>
+                            <constraint firstItem="HeO-1B-AYq" firstAttribute="leading" secondItem="ugE-Ul-H9I" secondAttribute="leading" id="nfO-lN-L9s"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hIw-NR-bui">
+                            <connections>
+                                <action selector="logOut:" destination="Lbl-k5-U4i" id="0H0-cG-lCg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="M5q-Fn-0nB">
                             <connections>
                                 <segue destination="l8a-VI-5TI" kind="presentation" id="Nyt-HA-yfj"/>

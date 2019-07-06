@@ -30,6 +30,17 @@
 @implementation TimelineViewController
 
 
+- (IBAction)logOut:(id)sender {
+    [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [[APIManager shared] logout];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,18 +54,6 @@
     self.tableView.delegate = self;
     
     [self APIRequestCall];
-}
-
-- (void)logOut{
-    [UIApplication sharedApplication].delegate;
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
-    
-    [[APIManager shared] logout];
 }
 
 - (void)APIRequestCall{
