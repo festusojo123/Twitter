@@ -12,7 +12,7 @@
 @interface APIManager : BDBOAuth1SessionManager
 
 + (instancetype)shared;
-
+//these are the methods declared within this file that will allow the API to interact with the different functionalities, more about these on their site
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
